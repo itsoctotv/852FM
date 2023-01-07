@@ -1,0 +1,118 @@
+<!-- made by octo; last edited: 01/07/23; available on github.com/itsoctotv -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono&display=swap" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portal radio | 85.2 FM!</title>
+    <style type="text/css">
+	
+        body{
+            font-family: 'Fira Mono';
+            font-size: 16px;
+            overflow: hidden;
+            background-color: #2d2d2d;
+            font-weight: bold;
+            margin: 5px;
+        }
+        h1,h2{
+            color:#FFF;
+            /*position: absolute;
+            
+            top:30%;
+            left: 50%;
+            transform: translate(-50%,-50%);*/
+
+        }
+        .c2{
+            
+            color:#FFF;
+            width: 50%;
+            margin:auto;
+            display: flex;
+            justify-content: center;
+            /*position: absolute;
+            transform: translate(-50%,-50%);*/
+        }
+        .c1{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+          position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        a{
+          text-decoration: none;
+          color: #FFF;
+        }
+        .playButton{
+          transition: all 1.2s ease-in-out; /* Add a transition effect */
+          width: 225px;
+          height: 225px;
+          
+
+        }
+        .playButton.animating{
+          transform: scale(1.2);
+
+        }
+
+        
+    </style>
+</head>
+<body>
+  <div class="c1">
+    <div class="c1-2">
+      <h1>85.2 FM!</h1>
+    </div>
+    <h2>click the radio to play!</h2>
+    <div class="c2">
+      <img src="pics/radio.png" id="playButton" class="playButton" onclick="playPause()">
+
+    </div>
+
+    <audio id="music" src="res/portalradio.mp3">
+        
+            your browser does not support the audio element.
+      </audio>
+    <script>
+        
+        function playPause() {
+          var music = document.getElementById("music");
+          var playButton = document.getElementById("playButton");
+          if (music.paused) {
+            music.play();
+            playButton.src = "pics/radiooff.png";
+          } else {
+            music.pause();
+            playButton.src = "pics/radio.png";
+          }
+        }
+        var intervalId;
+
+        document.getElementById("playButton").addEventListener("click", function() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+          document.getElementById("playButton").classList.remove("animating");
+        } else {
+          intervalId = setInterval(function() {
+          document.getElementById("playButton").classList.toggle("animating");
+          }, 1000);
+        }
+        });
+      </script>
+    <h2><a href="http://itsoctotv.com"><< back</a> </h2>
+  </div>
+    
+</body>
+</html>
